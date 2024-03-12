@@ -13,6 +13,8 @@ Tuesday March 12, Notes:
 
     * EncryptionAlg.py encrypts and decrypts user command line input
 
+    * .github/workflows/main.yml is a yml script meant for github actions. Allows program to run at the click of a button
+
     * Necessary installs listed below:
         * pip3 install pycryptodome
         * pip3 install -U pytest
