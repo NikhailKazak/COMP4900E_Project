@@ -1,8 +1,7 @@
 name: run ExecutionScript.py
 
 on:
-  schedule:
-    - cron: '20 9,21 * * *' # At 9:20AM and 9:20PM
+  workflow_dispatch:
 
 jobs:
   build:
