@@ -1,0 +1,26 @@
+name: run ExecutionScript.py
+
+on:
+  schedule:
+    - cron: '30 5,17 * * *' # At 5:30AM and 5:30PM
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v4.1.2 # checkout the repository content
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed
+
+      - name: install python packages
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install pycryptodome
+          pip3 install -U pytest
+
+      - name: execute py script # run program
+        run: python3 ./ExecutionScript.py "test String"
