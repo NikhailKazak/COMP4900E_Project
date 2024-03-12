@@ -12,3 +12,7 @@ Tuesday March 12, Notes:
     * TestEncryptionAlg.py is meant to run Pytest to ensure output
 
     * EncryptionAlg.py encrypts and decrypts user command line input
+
+    * Necessary installs listed below:
+        * pip3 install pycryptodome
+        * pip3 install -U pytest
