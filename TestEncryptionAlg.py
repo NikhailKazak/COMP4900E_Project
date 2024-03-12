@@ -1,5 +1,9 @@
 import pytest
 
+'''
+Tests whether or not the string was 
+decrypted as intended
+'''
 def test_string_return(myString, decryptedText):
     try:
         assert myString==decryptedText
