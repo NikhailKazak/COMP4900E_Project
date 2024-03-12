@@ -2,7 +2,7 @@ name: run ExecutionScript.py
 
 on:
   schedule:
-    - cron: '30 5,17 * * *' # At 5:30AM and 5:30PM
+    - cron: '15 5,17 * * *' # At 5:15AM and 5:15PM
 
 jobs:
   build:
