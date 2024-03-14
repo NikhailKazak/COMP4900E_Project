@@ -36,5 +36,5 @@ Thursday March 14, Notes:
 
     * Necessary installs listed below:
         * pip3 install pqcrypto
-        * Note: the pqcrypto directory included with the code should replace the one you have after the pip install - specifically it should replace the one that can be found in your pip install folder
+            * Note: the pqcrypto directory included with the code should replace the one you have after the pip install - specifically it should replace the one that can be found in your pip install folder
             * This one differs in that it has the dependencies built (which the pip version does not by default)
