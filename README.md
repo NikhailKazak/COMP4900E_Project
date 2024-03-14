@@ -25,7 +25,7 @@ Thursday March 14, Notes:
     * TestEncryptionAlg.py has been changed to use the Python PQCrypto (Post-Quantum Crypto) library
         * Preliminary attempt to implement Kyber/Dilithium in Python
 
-    * ExecutionScript.py now accepts modes and/or a string when launch - refer to launch instructions above
+    * ExecutionScript.py now accepts modes and/or a string when launched - refer to launch instructions above
 
     * KyberDilithiumEncryptionAlg.py leverages an implementation of a kyber/dilithium library - pqcrypto
         * Includes general description of operations
@@ -36,5 +36,5 @@ Thursday March 14, Notes:
 
     * Necessary installs listed below:
         * pip3 install pqcrypto
-        * Note: the pqcrypto directory included with the code should replace the one you have after the pip install - can be found your pip install folder
+        * Note: the pqcrypto directory included with the code should replace the one you have after the pip install - specifically it should replace the one that can be found in your pip install folder
             * This one differs in that it has the dependencies built (which the pip version does not by default)
