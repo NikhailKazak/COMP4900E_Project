@@ -2,9 +2,9 @@
 
 * To launch:
     * File should be executed on command line as follows
-            * python3 ./ExecutionScript.py <"mode"> <"String">
-            * Note: <"mode"> clarifies if you want to use rsa/kyber/dilithium - mandatory
-            * Note: <"String"> is a placeholder to be replaced by a string. Multiword strings should be quoted - needed for RSA and Dilithium
+        * python3 ./ExecutionScript.py <"mode"> <"String">
+        * Note: <"mode"> clarifies if you want to use rsa/kyber/dilithium - mandatory
+        * Note: <"String"> is a placeholder to be replaced by a string. Multiword strings should be quoted - needed for RSA and Dilithium
 
 Tuesday March 12, Notes:
 * Changes by Nikhail: 
