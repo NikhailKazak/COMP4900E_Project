@@ -27,7 +27,7 @@ Thursday March 14, Notes:
 
     * ExecutionScript.py now accepts modes and/or a string when launched - refer to launch instructions above
 
-    * KyberDilithiumEncryptionAlg.py leverages an implementation of a kyber/dilithium library - pqcrypto
+    * KyberDilithiumEncryptionAlg.py leverages an implementation of a kyber/dilithium library - [pqcrypto](https://github.com/kpdemetriou/pqcrypto)
         * Includes general description of operations
 
     * RSAExampleEncryptionAlg.py - renamed version of EncryptionAlg.py
