@@ -36,5 +36,6 @@ Thursday March 14, Notes:
 
     * Necessary installs listed below:
         * pip3 install pqcrypto
-            * Note: the pqcrypto directory included with the code should replace the one you have after the pip install - specifically it should replace the one that can be found in your pip install folder
+            * Note: the inner pqcrypto (./pqcrypto/pqcrypto) directory included with the code should replace the one you have after the pip install - specifically it should replace the one that can be found in your pip install folder. DO NOT copy the full directory only the singular pqcrypto folder containing _kem, kem, _sign, sign, init.py & common.py 
             * This one differs in that it has the dependencies built (which the pip version does not by default)
+            * The full folder has been included to assist with the refactoring of the yml file
