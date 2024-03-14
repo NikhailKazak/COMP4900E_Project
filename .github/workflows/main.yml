@@ -20,7 +20,7 @@ jobs:
           python3 -m pip install --upgrade pip
           pip3 install pycryptodome
           pip3 install -U pytest
-          pip3 install pqcrypto
+          pip3 install ./pqcrypto
 
       - name: execute py script # run programs
         run: |
