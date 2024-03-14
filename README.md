@@ -21,7 +21,7 @@ Tuesday March 12, Notes:
         * pip3 install -U pytest
 
 Thursday March 14, Notes:
-* Changes by Nikhail
+* Changes by Nikhail:
     * TestEncryptionAlg.py has been changed to use the Python PQCrypto (Post-Quantum Crypto) library
         * Preliminary attempt to implement Kyber/Dilithium in Python
 
