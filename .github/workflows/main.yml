@@ -32,13 +32,13 @@ jobs:
           touch /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/kem/__init__.py
       
       - name: List contents of pqcrypto_tmp after compilation
-        run: ls -la
+        run: ls -la ./pqcrypto_tmp
   
       - name: Remove existing _kem directory
         run: rm -rf /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/_kem
 
       - name: Copy _kem Directory
-        run: cp -r ./_kem /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/
+        run: cp -r ./pqcrypto_tmp/pqcrypto/_kem /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/
 
       - name: Clean up pqcrypto
         run: |
