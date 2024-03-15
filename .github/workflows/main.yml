@@ -42,7 +42,7 @@ jobs:
 
       - name: Clean up pqcrypto
         run: |
-          cd..  
+          cd ..  
           rm -rf ./pqcrypto_tmp
 
       - name: execute py script # run programs
