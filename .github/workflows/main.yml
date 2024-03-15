@@ -21,31 +21,26 @@ jobs:
           pip3 install pycryptodome
           pip3 install -U pytest
           pip3 install pqcrypto
-          
-      - name: Checkout Repository
-        uses: actions/checkout@v4.1.2
-    
-      - name: Download Source Code
-        run: git clone https://github.com/kpdemetriou/pqcrypto
-      
-      - name: Change Directory to Source Code
-        run: cd ./pqcrypto
-      
-      - name: Compile Source Code
-        run: python3 ./compile.py
-      
-      - name: Create __init__.py File in kem Directory
-        run: touch ./pqcrypto/kem/__init__.py
-      
-      - name: Remove _kem Directory
-        run: rm -rf /home/runner/.local/lib/python3.11/site-packages/pqcrypto/_kem
-      
-      - name: Copy _kem Directory from Compiled Source Code
-        run: cp -r ./pqcrypto/_kem /home/runner/.local/lib/python3.11/site-packages/pqcrypto/
 
-      - name: Back to home dir
-        run: cd .. 
-        
+      - name: Download pqcrypto
+        run: git clone https://github.com/kpdemetriou/pqcrypto ./pqcrypto_tmp
+
+      - name: Prepare pqcrypto
+        run: |
+          cd pqcrypto_tmp
+          python3 ./compile.py
+          touch /home/runner/.local/lib/python3.11/site-packages/pqcrypto/kem/__init__.py
+
+      - name: Remove existing _kem directory
+        run: rm -rf /home/runner/.local/lib/python3.11/site-packages/pqcrypto/_kem
+
+      - name: Copy _kem Directory
+        run: cp -r pqcrypto_tmp/_kem /home/runner/.local/lib/python3.11/site-packages/pqcrypto/
+
+      - name: Clean up pqcrypto
+        run: |
+          cd..  
+          rm -rf pqcrypto_tmp
 
       - name: execute py script # run programs
         run: |
