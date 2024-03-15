@@ -30,7 +30,10 @@ jobs:
           cd pqcrypto_tmp
           python3 ./compile.py
           touch /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/kem/__init__.py
-
+      
+      - name: List contents of pqcrypto_tmp after compilation
+        run: ls -la
+  
       - name: Remove existing _kem directory
         run: rm -rf /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/_kem
 
