@@ -6,7 +6,6 @@ authors = ["Phil Demetriou <inbox@philonas.net>"]
 packages = [{ include = "pqcrypto" }]
 build = "extend.py"
 include = ["algorithms.py", "compile.py", "extend.py", "sources/**/*"]
-repository = "https://github.com/kpdemetriou/pqcrypto"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
