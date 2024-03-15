@@ -35,12 +35,12 @@ jobs:
         run: rm -rf /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/_kem
 
       - name: Copy _kem Directory
-        run: cp -r pqcrypto_tmp/_kem /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/
+        run: cp -r ./_kem /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/
 
       - name: Clean up pqcrypto
         run: |
           cd..  
-          rm -rf pqcrypto_tmp
+          rm -rf ./pqcrypto_tmp
 
       - name: execute py script # run programs
         run: |
