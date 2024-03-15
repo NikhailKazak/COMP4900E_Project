@@ -33,6 +33,7 @@ Thursday March 14, Notes:
     * RSAExampleEncryptionAlg.py - renamed version of EncryptionAlg.py
 
     * main.yml is broken for now - don't expect it to work until it's refactored
+        * Follow up - Works again
 
     * Necessary installs listed below:
         * pip3 install pqcrypto
