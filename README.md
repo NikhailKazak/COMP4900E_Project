@@ -38,3 +38,7 @@ Thursday March 14, Notes:
     * Necessary installs listed below:
         * pip3 install pqcrypto
             * Note: pqcrypto needs to be built on your local system as described in the .yml file for the lib to work. Just pip installing won't work
+
+April 2, Notes:
+* Changes by Nikhail:
+    * Made changes in ./Example folder
