@@ -20,7 +20,7 @@ def aes_call_encrypt(key):
     #Encrypts files in the bin folder
     for filename in os.listdir(folder_path):
         input_file = os.path.join(folder_path, filename)
-        if os.path.isfile(input_file) and not (input_file.endswith("_encrypted.txt") or input_file.endswith("_decrypted.txt")):
+        if os.path.isfile(input_file): #and not (input_file.endswith("_encrypted.txt") or input_file.endswith("_decrypted.txt")):
             output_file_encrypted = os.path.join(output_folder_encrypted, filename + "_encrypted")
             aes_proceed_encrypt_file(key, input_file, output_file_encrypted)
 
@@ -44,7 +44,7 @@ def aes_call_decrypt(key):
     #Decrypts encrypted files in the folder
     for filename in os.listdir(output_folder_encrypted):
         input_file_encrypted = os.path.join(output_folder_encrypted, filename)
-        output_file_decrypted = os.path.join(output_folder_decrypted, filename.replace("_encrypted", "_decrypted"))
+        output_file_decrypted = os.path.join(output_folder_decrypted, filename.replace("_encrypted", ""))
         aes_proceed_decrypt_file(key, input_file_encrypted, output_file_decrypted)
 
 def aes_proceed_decrypt_file(key, input_file_encrypted, output_file_decrypted):
