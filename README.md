@@ -15,7 +15,7 @@
         * Note, though the controlFlowSimLauncher.py can work on 1 device, the assumption made throughout the project is as follows:
             * Because we want to simulate a real life application, for PQC signing / security of the boot process we assume the use of a PC, another device (in our case a Raspberry Pi 4B hereon refered to as an RPI) and a QNX VM. 
                 * The PC - the decryption device - generates the kyber keypair. Because the public key by definition is known to the world it may be refered to by other devices. 
-                * The RPI - the encryption device uses the kyber public key to encrypts the key generated AES symmetric key after it has been used to encrypt the files necessary for boot of the QNX vm. Additionally the encrypt sym. key is signed, providing evidence of integrity.
+                * The RPI - the encryption device - uses the kyber public key to encrypt the AES symmetric key after it has been used to encrypt the files necessary for boot of the QNX vm. Additionally the encrypt sym. key is signed, providing evidence of integrity.
                 * A file transfer occurs to send certain data (dilithium pub. key, the encrypted files, the signed encrypted sym.key, the non-signed encrypted sym. key) to the PC - the decryption device. At which point the signature is verified, validating the integrity of the encrypted sym. key. Then, the sym. key is decrypted with the kyber private key and used to decrypted the files.
                 * Once decrypted, the boot folder is moved to the approriate directory for the QNX vm to boot.
                 * And that's it!
