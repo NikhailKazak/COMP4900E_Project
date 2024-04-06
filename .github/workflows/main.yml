@@ -49,3 +49,4 @@ jobs:
       - name: execute py script # run programs
         run: |
           python3 ./controlFlowSimLauncher.py
+          python3 ./testDecryption.py
