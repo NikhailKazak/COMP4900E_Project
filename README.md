@@ -1,44 +1,35 @@
 # COMP4900E_Project
 
 * To launch:
-    * File should be executed on command line as follows
-        * python3 ./ExecutionScript.py <"mode"> <"String">
-        * Note: <"mode"> clarifies if you want to use rsa/kyber/dilithium - mandatory
-        * Note: <"String"> is a placeholder to be replaced by a string. Multiword strings should be quoted - needed for RSA and Dilithium
+    * Launch from controlFlowSimLauncher.py
+        * python3 ./controlFlowSimLauncher.py
 
-Tuesday March 12, Notes:
-* Changes by Nikhail: 
-    * ExecutionScript.py deals with the control flow
 
-    * TestEncryptionAlg.py is meant to run Pytest to ensure output
-
-    * EncryptionAlg.py encrypts and decrypts user command line input
-
-    * .github/workflows/main.yml is a yml script meant for github actions. Allows program to run at the click of a button
-
+* Brief Description:
     * Necessary installs listed below:
         * pip3 install pycryptodome
         * pip3 install -U pytest
-
-Thursday March 14, Notes:
-* Changes by Nikhail:
-    * TestEncryptionAlg.py has been changed to use the Python PQCrypto (Post-Quantum Crypto) library
-        * Preliminary attempt to implement Kyber/Dilithium in Python
-
-    * ExecutionScript.py now accepts modes and/or a string when launched - refer to launch instructions above
-
-    * KyberDilithiumEncryptionAlg.py leverages an implementation of a kyber/dilithium library - [pqcrypto](https://github.com/kpdemetriou/pqcrypto)
-        * Includes general description of operations
-
-    * RSAExampleEncryptionAlg.py - renamed version of EncryptionAlg.py
-
-    * main.yml is broken for now - don't expect it to work until it's refactored
-        * Follow up - Works again
-
-    * Necessary installs listed below:
         * pip3 install pqcrypto
-            * Note: pqcrypto needs to be built on your local system as described in the .yml file for the lib to work. Just pip installing won't work
+            * Note: [pqcrypto](https://github.com/kpdemetriou/pqcrypto) needs to be built on your local system as outlined in the .yml file for the lib to work. Just pip installing won't make it work 
+    * Process outline
+        * Note, though the controlFlowSimLauncher.py can work on 1 device, the assumption made throughout the project is as follows:
+            * Because we want to simulate a real life application, for PQC signing / security of the boot process we assume the use of a PC, another device (in our case a Raspberry Pi 4B hereon refered to as an RPI) and a QNX VM. 
+                * The PC - the decryption device - generates the kyber keypair. Because the public key by definition is known to the world it may be refered to by other devices. 
+                * The RPI - the encryption device uses the kyber public key to encrypts the key generated AES symmetric key after it has been used to encrypt the files necessary for boot of the QNX vm. Additionally the encrypt sym. key is signed, providing evidence of integrity.
+                * A file transfer occurs to send certain data (dilithium pub. key, the encrypted files, the signed encrypted sym.key, the non-signed encrypted sym. key) to the PC - the decryption device. At which point the signature is verified, validating the integrity of the encrypted sym. key. Then, the sym. key is decrypted with the kyber private key and used to decrypted the files.
+                * Once decrypted, the boot folder is moved to the approriate directory for the QNX vm to boot.
+                * And that's it!
+    * Files / directories:
+        * controlFlowSimLauncher.py runs the control flow outlined above -> More clearly reflected in controlFlowDecDevice.py & controlFlowEncDevice.py respectively
 
-April 2, Notes:
-* Changes by Nikhail:
-    * Made changes in ./Example folder
+        * AES.py is meant to encrypt and decrypt all files from the QNX /boot directory using AES in CFB mode
+
+        * PQC.py is meant to generate kyber / dilithium keypairs, encrypt / decrypt keys, and sign / verify signatures 
+
+        * /decrypted is where decrypted files go to after the encrypted file variants are decrypted -> assists with the test
+
+        * /encrypted is where encrypted files go to after being encrypted -> assists with identifying what is / isn't encrypted
+
+        * testDecryption reads through the intial set of files and compares them against their decrypted variants, ensuring decryption occured approriately -> NOTE: only works on standard file encodings
+
+        * .github/workflows/main.yml is a yml script meant for github actions. Allows program to run at the click of a button

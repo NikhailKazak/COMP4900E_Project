@@ -48,6 +48,4 @@ jobs:
 
       - name: execute py script # run programs
         run: |
-          python3 ./ExecutionScript.py rsa "test String"
-          python3 ./ExecutionScript.py dilithium "test String"
-          python3 ./ExecutionScript.py kyber
+          python3 ./controlFlowSimLauncher.py
