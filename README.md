@@ -1,5 +1,7 @@
 # COMP4900E_Project
 
+* By: Nikhail Kazak, Abbas Mohamed, Hamza Shaikh, Issac Bragg-Gardiner & Anwar Kulane
+
 * To launch:
     * Launch from controlFlowSimLauncher.py
         * python3 ./controlFlowSimLauncher.py
