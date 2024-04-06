@@ -34,12 +34,12 @@ jobs:
         run: ls -la ./pqcrypto_tmp/pqcrypto
   
       - name: Remove existing pycrypto directory
-        run: rm -rf /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto
+        run: rm -rf /opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/pqcrypto
 
       - name: Copy pycrypto Directory
         run: |
-          cp -r ./pqcrypto_tmp/pqcrypto /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/
-          touch /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pqcrypto/kem/__init__.py
+          cp -r ./pqcrypto_tmp/pqcrypto /opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/
+          touch /opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/pqcrypto/kem/__init__.py
 
       - name: Clean up pqcrypto
         run: |
