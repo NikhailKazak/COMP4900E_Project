@@ -8,15 +8,21 @@
 
 
 * Brief Description:
+
+    * This branches purpose is to experiment with different formats of collecting telemetry, current this can measure the time taken to encrypt/decrypt the files
+    * Along with its CPU usage for certain steps. Feel free to try out different algorithms/methods of collecting metrics
+
     * Necessary installs listed below:
         * pip3 install pycryptodome
         * pip3 install -U pytest
         * pip3 install pqcrypto
-            * Note: [pqcrypto](https://github.com/kpdemetriou/pqcrypto) needs to be built on your local system as outlined in the .yml file for the lib to work. Just pip installing won't make it work 
+        * pip3 install psutil
+
+            * Note: [pqcrypto](https://github.com/kpdemetriou/pqcrypto) needs to be built on your local system as outlined in the .yml file for the lib to work. Just pip installing won't make it work
     * Process outline
         * Note, though the controlFlowSimLauncher.py can work on 1 device, the assumption made throughout the project is as follows:
-            * Because we want to simulate a real life application, for PQC signing / security of the boot process we assume the use of a PC, another device (in our case a Raspberry Pi 4B hereon refered to as an RPI) and a QNX VM. 
-                * The PC - the decryption device - generates the kyber keypair. Because the public key by definition is known to the world it may be refered to by other devices. 
+            * Because we want to simulate a real life application, for PQC signing / security of the boot process we assume the use of a PC, another device (in our case a Raspberry Pi 4B hereon refered to as an RPI) and a QNX VM.
+                * The PC - the decryption device - generates the kyber keypair. Because the public key by definition is known to the world it may be refered to by other devices.
                 * The RPI - the encryption device - uses the kyber public key to encrypt the AES symmetric key after it has been used to encrypt the files necessary for boot of the QNX vm. Additionally the encrypted sym. key is signed, providing evidence of integrity.
                 * A file transfer occurs to send certain data (dilithium pub. key, the encrypted files, the signed encrypted sym.key, the non-signed encrypted sym. key) to the PC - the decryption device. At which point the signature is verified, validating the integrity of the encrypted sym. key. Then, the sym. key is decrypted with the kyber private key and used to decrypt the files.
                 * Once decrypted, the boot folder is moved to the appropriate directory for the QNX vm to boot.
@@ -26,7 +32,7 @@
 
         * AES.py is meant to encrypt and decrypt all files from the QNX /boot directory using AES in CFB mode
 
-        * PQC.py is meant to generate kyber / dilithium keypairs, encrypt / decrypt keys, and sign / verify signatures 
+        * PQC.py is meant to generate kyber / dilithium keypairs, encrypt / decrypt keys, and sign / verify signatures
 
         * /decrypted is where decrypted files go to after the encrypted file variants are decrypted -> assists with the test
 

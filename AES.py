@@ -4,6 +4,8 @@ from Crypto.Random import get_random_bytes
 from pqcrypto.kem.kyber1024 import generate_keypair as generate_kyber_keypair, encrypt as kyber_encrypt, decrypt as kyber_decrypt
 from pqcrypto.sign.dilithium4 import generate_keypair as generate_dilithium_keypair, sign as dilithium_sign, verify as dilithium_verify
 
+#alternative key signing algorithim that can be used for experimentational differences, to try switch out the line above with thie line below
+#from pqcrypto.sign.sphincs_shake256_256s_robust import generate_keypair as generate_dilithium_keypair, sign as dilithium_sign, verify as dilithium_verify
 
 """
 Global paths/vars
@@ -20,7 +22,7 @@ def aes_call_encrypt(key):
     #Encrypts files in the bin folder
     for filename in os.listdir(folder_path):
         input_file = os.path.join(folder_path, filename)
-        if os.path.isfile(input_file): 
+        if os.path.isfile(input_file):
             output_file_encrypted = os.path.join(output_folder_encrypted, filename + "_encrypted")
             aes_proceed_encrypt_file(key, input_file, output_file_encrypted)
 
